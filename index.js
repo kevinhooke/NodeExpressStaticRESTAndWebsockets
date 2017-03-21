@@ -1,5 +1,6 @@
 const SocketServer = require('ws').Server;
 var express = require('express');
+var connectedUsers = [];
 
 //init Express REST apis
 var app = express();
