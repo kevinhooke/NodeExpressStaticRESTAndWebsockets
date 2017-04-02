@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <script language="JavaScript">
+        function websocketConnect(){
+            var ws = new WebSocket((window.location.protocol == 'https:' ? 'wss://' : 'ws://')
+                + window.location.host);
+
+             ws.onopen = function () {
+                 ws.send("test hello!");
+             };
+
+            ws.onmessage = function (message) {
+                console.log("message received: " + message.data);
+                document.getElementById('messageFromServer').innerHTML = message.data;
+            };
+
+        }
+    </script>
+</head>
+
+<h3>node.js Express Static content using HTML5 websocket client</h3>
+
+<p>This is a static page served from Express. It uses HTML5 Websockets api
+to connect to a node.js Websocket sever</p>
+<p>Press to connect and submit websocket message to websocket server</p>
+
+<button onclick="websocketConnect()">Connect to server via websocket</button>
+
+<div id="messageFromServer">
+</div>
+
+</html>

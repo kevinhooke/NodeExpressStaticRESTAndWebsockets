@@ -9,15 +9,13 @@ var app = express();
 var router = express.Router();
 var port = process.env.PORT || 80;
 
-//REST route for GET /status
+//default/test route
 router.get('/status', function(req, res) {
     res.json({ status: 'App is running!' });
 });
 
 //connect path to router
 app.use("/", router);
-
-//add middleware for static content
 app.use(express.static('static'))
 var server = app.listen(port, function () {
     console.log('node.js static, REST server and websockets listening on port: ' + port)
